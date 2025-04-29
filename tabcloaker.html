@@ -1,0 +1,32 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <input type="text" id="urlInput" placeholder="Enter URL here">
+    <button id="openBtn">Fullscreen</button>
+    <script>
+      document.getElementById('openBtn').onclick = function() {
+        var url = document.getElementById('urlInput').value;
+        if (url) {
+          var win = window.open();
+          win.document.body.style.margin = '0';
+          win.document.body.style.height = '100vh';
+          var iframe = win.document.createElement('iframe');
+          iframe.style.border = 'none';
+          iframe.style.width = '100%';
+          iframe.style.height = '100%';
+          iframe.style.margin = '0';
+          iframe.src = url;
+          win.document.body.appendChild(iframe);
+
+          // Update button appearance after click
+          this.style.background = 'grey';
+          this.innerHTML = "Already Open";
+          this.disabled = true;
+        } else {
+          alert("Please enter a valid URL.");
+        }
+      };
+    </script>
+  </body>
+</html>
